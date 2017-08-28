@@ -6,8 +6,8 @@ endif()
 
 include_directories(${MODULE_CORE_DIR}/include)
 
-add_library (aurorafw-core SHARED ${MODULE_CORE_SOURCE_DIR}/Debug.cpp)
-                              ${MODULE_CORE_SOURCE_DIR}/Application.cpp)
+add_library (aurorafw-core SHARED ${MODULE_CORE_SOURCE_DIR}/Debug.cpp
+                              	  ${MODULE_CORE_SOURCE_DIR}/Application.cpp)
 
 target_link_libraries(aurorafw-core aurorafw-cli)
 
