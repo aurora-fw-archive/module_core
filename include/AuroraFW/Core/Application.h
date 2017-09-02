@@ -1,6 +1,3 @@
-# module-core
-
-```cpp
 /****************************************************************************
 ** ┌─┐┬ ┬┬─┐┌─┐┬─┐┌─┐  ┌─┐┬─┐┌─┐┌┬┐┌─┐┬ ┬┌─┐┬─┐┬┌─
 ** ├─┤│ │├┬┘│ │├┬┘├─┤  ├┤ ├┬┘├─┤│││├┤ ││││ │├┬┘├┴┐
@@ -18,4 +15,22 @@
 ** ensure the GNU Lesser General Public License version 3 requirements
 ** will be met: https://www.gnu.org/licenses/lgpl-3.0.html.
 ****************************************************************************/
-```
+
+#ifndef AURORAFW_CORE_APPLICATION_H
+#define AURORAFW_CORE_APPLICATION_H
+
+#include <AuroraFW/Global.h>
+
+namespace AuroraFW
+{
+    class AFW_PREFIX Application
+    {
+    public:
+        Application(void (*mainFunction)(), int argc = 0, char *argv[] = NULL);
+        ~Application();
+        static ArVoid_t ExitSuccess();
+        static ArVoid_t ExitFail();
+    };
+}
+
+#endif // AURORAFW_CORE_APPLICATION_H

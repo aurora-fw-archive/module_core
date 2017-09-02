@@ -1,6 +1,3 @@
-# module-core
-
-```cpp
 /****************************************************************************
 ** ┌─┐┬ ┬┬─┐┌─┐┬─┐┌─┐  ┌─┐┬─┐┌─┐┌┬┐┌─┐┬ ┬┌─┐┬─┐┬┌─
 ** ├─┤│ │├┬┘│ │├┬┘├─┤  ├┤ ├┬┘├─┤│││├┤ ││││ │├┬┘├┴┐
@@ -18,4 +15,22 @@
 ** ensure the GNU Lesser General Public License version 3 requirements
 ** will be met: https://www.gnu.org/licenses/lgpl-3.0.html.
 ****************************************************************************/
-```
+
+#ifndef AURORAFW_CORE_DEBUG_H
+#define AURORAFW_CORE_DEBUG_H
+
+#include <AuroraFW/Global.h>
+
+namespace AuroraFW
+{
+    namespace Debug
+    {
+        extern ArBool_t Status;
+        extern ArBool_t isVerbose;
+        ArVoid_t enableDebug(ArBool_t silent = false);
+        ArVoid_t disableDebug(ArBool_t silent = false);
+        ArBool_t getDebugStatus();
+    }
+}
+
+#endif // AURORAFW_CORE_DEBUG_H

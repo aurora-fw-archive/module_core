@@ -1,21 +1,31 @@
-// ┌─┐┬ ┬┬─┐┌─┐┬─┐┌─┐  ┌─┐┬─┐┌─┐┌┬┐┌─┐┬ ┬┌─┐┬─┐┬┌─ | Powerful, Scalable and Cross Platform Framework
-// ├─┤│ │├┬┘│ │├┬┘├─┤  ├┤ ├┬┘├─┤│││├┤ ││││ │├┬┘├┴┐ | @author Luís Ferreira
-// ┴ ┴└─┘┴└─└─┘┴└─┴ ┴  └  ┴└─┴ ┴┴ ┴└─┘└┴┘└─┘┴└─┴ ┴ | @license GNU Public License v3
-//  Copyright (c) 2016 - Luís Ferreira. All right reserved
-//  More information in: https://github.com/ljmf00/ (Github Page)
+/****************************************************************************
+** ┌─┐┬ ┬┬─┐┌─┐┬─┐┌─┐  ┌─┐┬─┐┌─┐┌┬┐┌─┐┬ ┬┌─┐┬─┐┬┌─
+** ├─┤│ │├┬┘│ │├┬┘├─┤  ├┤ ├┬┘├─┤│││├┤ ││││ │├┬┘├┴┐
+** ┴ ┴└─┘┴└─└─┘┴└─┴ ┴  └  ┴└─┴ ┴┴ ┴└─┘└┴┘└─┘┴└─┴ ┴
+** A Powerful General Purpose Framework
+** More information in: https://aurora-fw.github.io/
+**
+** Copyright (C) 2017 Aurora Framework, All rights reserved.
+**
+** This file is part of the Aurora Framework. This framework is free
+** software; you can redistribute it and/or modify it under the terms of
+** the GNU Lesser General Public License version 3 as published by the
+** Free Software Foundation and appearing in the file LICENSE included in
+** the packaging of this file. Please review the following information to
+** ensure the GNU Lesser General Public License version 3 requirements
+** will be met: https://www.gnu.org/licenses/lgpl-3.0.html.
+****************************************************************************/
 
 #include <iostream>
 #include <string>
-#include <Aurora/Core/Application.h>
-#include <Aurora/CLI/Log.h>
-#include <Aurora/Core/Debug.h>
+#include <AuroraFW/Core/Application.h>
+#include <AuroraFW/CLI/Log.h>
+#include <AuroraFW/Core/Debug.h>
 
-namespace Aurora
+namespace AuroraFW
 {
     Application::Application(void (*mainFunction)(), int argc, char *argv[])
     {
-        ID = ( unsigned long ) Aurora::Debug::LastID;
-        Aurora::Debug::LastID++;
         if(argc == 2)
         {
             if(std::string(argv[1]) == "--debug")
@@ -28,22 +38,22 @@ namespace Aurora
             else
                 Debug::disableDebug(true);
         }
-        Shell::Log(Shell::Debug, "creating new application: id_", ID);
-        Shell::Log(Shell::Debug, "application id_", ID, " is created.");
+        CLI::Log(CLI::Debug, "creating new application");
+        CLI::Log(CLI::Debug, "application is created.");
         (*mainFunction)();
     }
     Application::~Application()
     {
-        Shell::Log(Shell::Debug, "application id_", ID, " is destroyed.");
+        CLI::Log(CLI::Debug, "application is destroyed.");
     }
     void Application::ExitSuccess()
     {
-        Shell::Log(Shell::Debug, "application return success code: ", EXIT_SUCCESS);
+        CLI::Log(CLI::Debug, "application return success code: ", EXIT_SUCCESS);
         exit(EXIT_SUCCESS);
     }
     void Application::ExitFail()
     {
-        Shell::Log(Shell::Debug, "application return error code: ", EXIT_FAILURE);
+        CLI::Log(CLI::Debug, "application return error code: ", EXIT_FAILURE);
         exit(EXIT_FAILURE);
     }
 }

@@ -1,49 +1,62 @@
-// ┌─┐┬ ┬┬─┐┌─┐┬─┐┌─┐  ┌─┐┬─┐┌─┐┌┬┐┌─┐┬ ┬┌─┐┬─┐┬┌─ | Powerful, Scalable and Cross Platform Framework
-// ├─┤│ │├┬┘│ │├┬┘├─┤  ├┤ ├┬┘├─┤│││├┤ ││││ │├┬┘├┴┐ | @author Luís Ferreira
-// ┴ ┴└─┘┴└─└─┘┴└─┴ ┴  └  ┴└─┴ ┴┴ ┴└─┘└┴┘└─┘┴└─┴ ┴ | @license GNU Public License v3
-//  Copyright (c) 2016 - Luís Ferreira. All right reserved
-//  More information in: https://github.com/ljmf00/ (Github Page)
+/****************************************************************************
+** ┌─┐┬ ┬┬─┐┌─┐┬─┐┌─┐  ┌─┐┬─┐┌─┐┌┬┐┌─┐┬ ┬┌─┐┬─┐┬┌─
+** ├─┤│ │├┬┘│ │├┬┘├─┤  ├┤ ├┬┘├─┤│││├┤ ││││ │├┬┘├┴┐
+** ┴ ┴└─┘┴└─└─┘┴└─┴ ┴  └  ┴└─┴ ┴┴ ┴└─┘└┴┘└─┘┴└─┴ ┴
+** A Powerful General Purpose Framework
+** More information in: https://aurora-fw.github.io/
+**
+** Copyright (C) 2017 Aurora Framework, All rights reserved.
+**
+** This file is part of the Aurora Framework. This framework is free
+** software; you can redistribute it and/or modify it under the terms of
+** the GNU Lesser General Public License version 3 as published by the
+** Free Software Foundation and appearing in the file LICENSE included in
+** the packaging of this file. Please review the following information to
+** ensure the GNU Lesser General Public License version 3 requirements
+** will be met: https://www.gnu.org/licenses/lgpl-3.0.html.
+****************************************************************************/
 
-#include <Aurora/CLI/Log.h>
-#include <Aurora/Core/Debug.h>
+#include <AuroraFW/CLI/Log.h>
+#include <AuroraFW/Core/Debug.h>
 
-namespace Aurora { namespace Debug
+namespace AuroraFW
+{
+	namespace Debug
 	{
-		bool Status = false;
-		bool isVerbose = false;
-		int LastID;
-		void enableDebug(bool silent)
+		ArBool_t Status = false;
+		ArBool_t isVerbose = false;
+		ArVoid_t enableDebug(ArBool_t silent)
 		{
 			if(Status)
 			{
 				if(!silent)
-					Shell::Log(Shell::Debug, "debug is already enabled");
+					CLI::Log(CLI::Debug, "debug is already enabled");
 			}
 			else
 			{
 				Status = true;
 				if(!silent)
 				{
-					Shell::Log(Shell::Debug, "┌─┐┬ ┬┬─┐┌─┐┬─┐┌─┐  ┌─┐┬─┐┌─┐┌┬┐┌─┐┬ ┬┌─┐┬─┐┬┌─");
-					Shell::Log(Shell::Debug, "├─┤│ │├┬┘│ │├┬┘├─┤  ├┤ ├┬┘├─┤│││├┤ ││││ │├┬┘├┴┐");
-					Shell::Log(Shell::Debug, "┴ ┴└─┘┴└─└─┘┴└─┴ ┴  └  ┴└─┴ ┴┴ ┴└─┘└┴┘└─┘┴└─┴ ┴");
-					Shell::Log(Shell::Debug, "debug is enabled");
+					CLI::Log(CLI::Debug, "┌─┐┬ ┬┬─┐┌─┐┬─┐┌─┐  ┌─┐┬─┐┌─┐┌┬┐┌─┐┬ ┬┌─┐┬─┐┬┌─");
+					CLI::Log(CLI::Debug, "├─┤│ │├┬┘│ │├┬┘├─┤  ├┤ ├┬┘├─┤│││├┤ ││││ │├┬┘├┴┐");
+					CLI::Log(CLI::Debug, "┴ ┴└─┘┴└─└─┘┴└─┴ ┴  └  ┴└─┴ ┴┴ ┴└─┘└┴┘└─┘┴└─┴ ┴");
+					CLI::Log(CLI::Debug, "debug is enabled");
 				}
 			}
 		}
-		void disableDebug(bool silent)
+		ArVoid_t disableDebug(ArBool_t silent)
 		{
 			if(!Status)
 			{
-				if(!silent) Shell::Log(Shell::Debug, "debug is already disabled");
+				if(!silent) CLI::Log(CLI::Debug, "debug is already disabled");
 			}
 			else
 			{
 				Status = false;
-				if(!silent) Shell::Log(Shell::Debug, "debug is disabled");
+				if(!silent) CLI::Log(CLI::Debug, "debug is disabled");
 			}
 		}
-		bool getDebugStatus()
+		ArBool_t getDebugStatus()
 		{
 			return Status;
 		}
