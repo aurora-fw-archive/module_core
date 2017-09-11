@@ -57,21 +57,11 @@
 #include <AuroraFW/GEngine/API.h>
 #include <AuroraFW/GEngine/OpenGL.h>
 #include <AuroraFW/GEngine/Input.h>
-#include <AuroraFW/GEngine/AssetManager.h>
+//#include <AuroraFW/GEngine/AssetManager.h>
 
 //Math
 #include <AuroraFW/Math/Vector2D.h>
 #include <AuroraFW/Math/Vector3D.h>
 #include <AuroraFW/Math/Vector4D.h>
-
-//#include <AuroraFW/Info/GPU.h>
-//#include <AuroraFW/Info/CPU.h>
-//#include <AuroraFW/Info/System.h>
-
-// Headers for cross-compiler
-
-//#include <AuroraFW/Cross/System/IO.h>
-//#include <AuroraFW/Cross/Video/VGA.h>
-
 
 #endif // AURORAFW_AURORA_H
