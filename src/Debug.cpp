@@ -19,13 +19,11 @@
 #include <AuroraFW/CLI/Log.h>
 #include <AuroraFW/Core/Debug.h>
 
-namespace AuroraFW
-{
-	namespace Debug
-	{
+namespace AuroraFW {
+	namespace Debug {
 		ArBool_t Status = false;
 		ArBool_t isVerbose = false;
-		ArVoid_t enableDebug(ArBool_t silent)
+		ArVoid_t enableDebug(const ArBool_t& silent)
 		{
 			if(Status)
 			{
@@ -44,7 +42,7 @@ namespace AuroraFW
 				}
 			}
 		}
-		ArVoid_t disableDebug(ArBool_t silent)
+		ArVoid_t disableDebug(const ArBool_t& silent)
 		{
 			if(!Status)
 			{

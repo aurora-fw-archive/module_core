@@ -21,14 +21,12 @@
 
 #include <AuroraFW/Global.h>
 
-namespace AuroraFW
-{
-    namespace Debug
-    {
+namespace AuroraFW {
+    namespace Debug {
         extern ArBool_t Status;
         extern ArBool_t isVerbose;
-        ArVoid_t enableDebug(ArBool_t silent = false);
-        ArVoid_t disableDebug(ArBool_t silent = false);
+        ArVoid_t enableDebug(const ArBool_t& silent = false);
+        ArVoid_t disableDebug(const ArBool_t& silent = false);
         ArBool_t getDebugStatus();
     }
 }

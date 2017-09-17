@@ -22,8 +22,7 @@
 #include <AuroraFW/CLI/Log.h>
 #include <AuroraFW/Core/Debug.h>
 
-namespace AuroraFW
-{
+namespace AuroraFW {
     Application::Application(void (*mainFunction)(), int argc, char *argv[])
     {
         if(argc == 2)

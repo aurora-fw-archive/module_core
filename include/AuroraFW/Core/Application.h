@@ -21,8 +21,7 @@
 
 #include <AuroraFW/Global.h>
 
-namespace AuroraFW
-{
+namespace AuroraFW {
     class AFW_PREFIX Application
     {
     public:
