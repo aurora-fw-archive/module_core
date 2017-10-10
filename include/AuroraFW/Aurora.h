@@ -21,47 +21,51 @@
 
 #include <AuroraFW/Global.h>
 
+
+// Standard Library
+#include <AuroraFW/STDL/Target.h>
+#include <AuroraFW/STDL/Type.h>
+#include <AuroraFW/STDL/Endian.h>
+#include <AuroraFW/STDL/String.h>
+#include <AuroraFW/STDL/CircularShift.h>
+
 // Core
 #include <AuroraFW/Core/Application.h>
 #include <AuroraFW/Core/Debug.h>
 
-// Crypto
-#include <AuroraFW/Crypto/AES.h>
+#ifndef AFW__PHC
+	// Crypto
+	#include <AuroraFW/Crypto/AES.h>
 
-// GUI
-#include <AuroraFW/GUI/Window.h>
-#include <AuroraFW/GUI/Label.h>
-#include <AuroraFW/GUI/Button.h>
-#include <AuroraFW/GUI/Layout.h>
-#include <AuroraFW/GUI/Application.h>
+	// GUI
+	#include <AuroraFW/GUI/Window.h>
+	#include <AuroraFW/GUI/Label.h>
+	#include <AuroraFW/GUI/Button.h>
+	#include <AuroraFW/GUI/Layout.h>
+	#include <AuroraFW/GUI/Application.h>
 
-// Shell
-#include <AuroraFW/CLI/Log.h>
-#include <AuroraFW/CLI/Color.h>
-#include <AuroraFW/CLI/Output.h>
-#include <AuroraFW/CLI/Input.h>
+	// Shell
+	#include <AuroraFW/CLI/Log.h>
+	#include <AuroraFW/CLI/Color.h>
+	#include <AuroraFW/CLI/Output.h>
+	#include <AuroraFW/CLI/Input.h>
 
-// Lib
-#include <AuroraFW/TLib/Target.h>
-#include <AuroraFW/TLib/Type.h>
-#include <AuroraFW/TLib/Endian.h>
-#include <AuroraFW/TLib/String.h>
+	// Information
+	#include <AuroraFW/Info/RAM.h>
+	#include <AuroraFW/Info/OS.h>
 
-// Information
-#include <AuroraFW/Info/RAM.h>
-#include <AuroraFW/Info/OS.h>
+	//GEngine
+	#include <AuroraFW/GEngine/Application.h>
+	#include <AuroraFW/GEngine/Window.h>
+	#include <AuroraFW/GEngine/API.h>
+	#include <AuroraFW/GEngine/OpenGL.h>
+	#include <AuroraFW/GEngine/Input.h>
+	#include <AuroraFW/GEngine/AssetManager.h>
 
-//GEngine
-#include <AuroraFW/GEngine/Application.h>
-#include <AuroraFW/GEngine/Window.h>
-#include <AuroraFW/GEngine/API.h>
-#include <AuroraFW/GEngine/OpenGL.h>
-#include <AuroraFW/GEngine/Input.h>
-#include <AuroraFW/GEngine/AssetManager.h>
-
-//Math
-#include <AuroraFW/Math/Vector2D.h>
-#include <AuroraFW/Math/Vector3D.h>
-#include <AuroraFW/Math/Vector4D.h>
+	//Math
+	#include <AuroraFW/Math/Vector2D.h>
+	#include <AuroraFW/Math/Vector3D.h>
+	#include <AuroraFW/Math/Vector4D.h>
+#endif
 
 #endif // AURORAFW_AURORA_H

@@ -19,21 +19,11 @@
 #ifndef AURORAFW_GLOBAL_H
 #define AURORAFW_GLOBAL_H
 
-#include <AuroraFW/TLib/Type.h>
-#include <AuroraFW/TLib/Target/Platform.h>
+#include <AuroraFW/STDL/Type.h>
+#include <AuroraFW/STDL/Export.h>
 
 #ifndef AURORAFW_
 #define AURORAFW_
 #endif // AURORAFW_
-
-#ifdef AFW_TARGET_PLATFORM_WINDOWS
-	#ifdef AURORAFW_IS_COMPILING
-		#define AFW_PREFIX __declspec(dllexport)
-	#else
-		#define AFW_PREFIX __declspec(dllimport)
-	#endif //AURORAFW_IS_COMPILING
-#else
-	#define AFW_PREFIX
-#endif //AFW_TARGET_PLATFORM_WINDOWS
 
 #endif // AURORAFW_GLOBAL_H

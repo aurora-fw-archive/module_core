@@ -20,15 +20,50 @@
 #define AURORAFW_CORE_DEBUG_H
 
 #include <AuroraFW/Global.h>
+#include <AuroraFW/STDL/Target/Environment.h>
+#include <AuroraFW/STDL/STL/IOStream.h>
 
 namespace AuroraFW {
-    namespace Debug {
-        extern ArBool_t Status;
-        extern ArBool_t isVerbose;
-        ArVoid_t enableDebug(const ArBool_t& silent = false);
-        ArVoid_t disableDebug(const ArBool_t& silent = false);
-        ArBool_t getDebugStatus();
-    }
+	namespace Debug {
+		extern afwbool_t* Status;
+		afwvoid_t enableDebug(const afwbool_t& silent = false);
+		afwvoid_t disableDebug(const afwbool_t& silent = false);
+		inline afwbool_t getDebugStatus()
+		{
+			return Status;
+		}
+
+		template <typename T>
+		void __Log(const T& t)
+		{
+			std::cout << t;
+		}
+	
+		template <typename T, typename... R>
+		void __Log(const T& t, const R&... args)
+		{
+			std::cout << t;
+			__Log(args...);
+		}
+
+		template <typename... T>
+		void Log(const T&... args)
+		{
+			// TODO: Windows ANSI integration
+			//       Needs to be tested on Windows and Apple platforms
+			if(Status == true)
+			{
+				#ifdef AFW_TARGET_ENVIRONMENT_UNIX
+					std::cout << "\033[0m\033[1m[\033[1;36mDEBUG\033[0;1m] \033[0m";
+				#else
+					std::cout << "[DEBUG] ";
+				#endif
+				__Log(args...);
+				std::cout << std::endl;
+				return;
+			}
+		}
+	}
 }
 
 #endif // AURORAFW_CORE_DEBUG_H

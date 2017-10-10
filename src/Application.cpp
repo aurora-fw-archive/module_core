@@ -23,36 +23,29 @@
 #include <AuroraFW/Core/Debug.h>
 
 namespace AuroraFW {
-    Application::Application(void (*mainFunction)(), int argc, char *argv[])
-    {
-        if(argc == 2)
-        {
-            if(std::string(argv[1]) == "--debug")
-                Debug::enableDebug();
-            else if(std::string(argv[1]) == "--verbose")
-            {
-                Debug::enableDebug(true);
-                Debug::isVerbose = true;
-            }
-            else
-                Debug::disableDebug(true);
-        }
-        CLI::Log(CLI::Debug, "creating new application");
-        CLI::Log(CLI::Debug, "application is created.");
-        (*mainFunction)();
-    }
-    Application::~Application()
-    {
-        CLI::Log(CLI::Debug, "application is destroyed.");
-    }
-    void Application::ExitSuccess()
-    {
-        CLI::Log(CLI::Debug, "application return success code: ", EXIT_SUCCESS);
-        exit(EXIT_SUCCESS);
-    }
-    void Application::ExitFail()
-    {
-        CLI::Log(CLI::Debug, "application return error code: ", EXIT_FAILURE);
-        exit(EXIT_FAILURE);
-    }
+	Application::Application(void (*mainFunction)(), int argc, char *argv[])
+	{
+		if(argc == 2)
+		{
+			if(std::string(argv[1]) == "--afw-debug")
+				Debug::enableDebug();
+		}
+		Debug::Log("creating new application");
+		Debug::Log("application is created.");
+		(*mainFunction)();
+	}
+	Application::~Application()
+	{
+		Debug::Log("application is destroyed.");
+	}
+	void Application::ExitSuccess()
+	{
+		Debug::Log("application return success code: ", EXIT_SUCCESS);
+		exit(EXIT_SUCCESS);
+	}
+	void Application::ExitFail()
+	{
+		Debug::Log("application return error code: ", EXIT_FAILURE);
+		exit(EXIT_FAILURE);
+	}
 }

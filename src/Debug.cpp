@@ -16,47 +16,42 @@
 ** will be met: https://www.gnu.org/licenses/lgpl-3.0.html.
 ****************************************************************************/
 
-#include <AuroraFW/CLI/Log.h>
 #include <AuroraFW/Core/Debug.h>
 
 namespace AuroraFW {
 	namespace Debug {
-		ArBool_t Status = false;
-		ArBool_t isVerbose = false;
-		ArVoid_t enableDebug(const ArBool_t& silent)
+		afwbool_t Status = false;
+		afwbool_t isVerbose = false;
+		afwvoid_t enableDebug(const afwbool_t& silent)
 		{
-			if(Status)
+			if(Status == true)
 			{
 				if(!silent)
-					CLI::Log(CLI::Debug, "debug is already enabled");
+					Log("debug is already enabled");
 			}
 			else
 			{
 				Status = true;
 				if(!silent)
 				{
-					CLI::Log(CLI::Debug, "┌─┐┬ ┬┬─┐┌─┐┬─┐┌─┐  ┌─┐┬─┐┌─┐┌┬┐┌─┐┬ ┬┌─┐┬─┐┬┌─");
-					CLI::Log(CLI::Debug, "├─┤│ │├┬┘│ │├┬┘├─┤  ├┤ ├┬┘├─┤│││├┤ ││││ │├┬┘├┴┐");
-					CLI::Log(CLI::Debug, "┴ ┴└─┘┴└─└─┘┴└─┴ ┴  └  ┴└─┴ ┴┴ ┴└─┘└┴┘└─┘┴└─┴ ┴");
-					CLI::Log(CLI::Debug, "debug is enabled");
+					Log("┌─┐┬ ┬┬─┐┌─┐┬─┐┌─┐  ┌─┐┬─┐┌─┐┌┬┐┌─┐┬ ┬┌─┐┬─┐┬┌─");
+					Log("├─┤│ │├┬┘│ │├┬┘├─┤  ├┤ ├┬┘├─┤│││├┤ ││││ │├┬┘├┴┐");
+					Log("┴ ┴└─┘┴└─└─┘┴└─┴ ┴  └  ┴└─┴ ┴┴ ┴└─┘└┴┘└─┘┴└─┴ ┴");
+					Log("debug is enabled");
 				}
 			}
 		}
-		ArVoid_t disableDebug(const ArBool_t& silent)
+		afwvoid_t disableDebug(const afwbool_t& silent)
 		{
-			if(!Status)
+			if(Status == false)
 			{
-				if(!silent) CLI::Log(CLI::Debug, "debug is already disabled");
+				if(!silent) Log("debug is already disabled");
 			}
 			else
 			{
 				Status = false;
-				if(!silent) CLI::Log(CLI::Debug, "debug is disabled");
+				if(!silent) Log("debug is disabled");
 			}
-		}
-		ArBool_t getDebugStatus()
-		{
-			return Status;
 		}
 	}
 }

@@ -22,14 +22,14 @@
 #include <AuroraFW/Global.h>
 
 namespace AuroraFW {
-    class AFW_PREFIX Application
-    {
-    public:
-        Application(void (*mainFunction)(), int argc = 0, char *argv[] = NULL);
-        ~Application();
-        static ArVoid_t ExitSuccess();
-        static ArVoid_t ExitFail();
-    };
+	class AFW_EXPORT Application
+	{
+	public:
+		Application(void (*mainFunction)(), int argc = 0, char *argv[] = NULL);
+		~Application();
+		static afwvoid_t ExitSuccess();
+		static afwvoid_t ExitFail();
+	};
 }
 
 #endif // AURORAFW_CORE_APPLICATION_H

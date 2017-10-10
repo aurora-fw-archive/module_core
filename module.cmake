@@ -21,14 +21,24 @@ if (NOT CONFIGURED_ONCE)
 endif()
 
 include_directories(${AURORAFW_MODULE_CORE_DIR}/include)
-file(GLOB AURORAFW_MODULE_CORE_HEADERS_CORE ${AURORAFW_MODULE_CORE_DIR}/include/Aurora/Core/*.h)
 
-add_library (aurorafw-core SHARED ${AURORAFW_MODULE_CORE_SOURCE_DIR}/Debug.cpp
-                              	  ${AURORAFW_MODULE_CORE_SOURCE_DIR}/Application.cpp)
+file(GLOB_RECURSE AURORAFW_MODULE_CORE_HEADERS ${AURORAFW_MODULE_CORE_DIR}/include/*.*)
+file(GLOB_RECURSE AURORAFW_MODULE_CORE_SOURCE ${AURORAFW_MODULE_CORE_SOURCE_DIR}/*.*)
 
-target_link_libraries(aurorafw-core aurorafw-cli)
+add_library (aurorafw-core SHARED ${AURORAFW_MODULE_CORE_SOURCE})
+
+if(AURORA_PCH)
+	add_precompiled_header(aurorafw-core "${AURORAFW_MODULE_CORE_HEADERS}")
+endif()
+
+#target_link_libraries(aurorafw-core aurorafw-cli)
 
 set_target_properties(aurorafw-core PROPERTIES OUTPUT_NAME aurorafw-core)
 
 install(TARGETS aurorafw-core DESTINATION lib)
-install(FILES ${AURORAFW_MODULE_CORE_HEADERS_CORE} DESTINATION include/Aurora/Core)
+
+file(GLOB AURORAFW_MODULE_CORE_HEADERS_AURORAFW ${AURORAFW_MODULE_CORE_DIR}/include/AuroraFW/*.*)
+file(GLOB AURORAFW_MODULE_CORE_HEADERS_CORE ${AURORAFW_MODULE_CORE_DIR}/include/AuroraFW/Core/*.*)
+
+install(FILES ${AURORAFW_MODULE_CORE_HEADERS_AURORAFW} DESTINATION include/AuroraFW/)
+install(FILES ${AURORAFW_MODULE_CORE_HEADERS_CORE} DESTINATION include/AuroraFW/Core)
