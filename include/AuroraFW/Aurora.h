@@ -61,6 +61,7 @@
 	#include <AuroraFW/GEngine/OpenGL.h>
 	#include <AuroraFW/GEngine/Input.h>
 	#include <AuroraFW/GEngine/AssetManager.h>
+	#include <AuroraFW/GEngine/AssetType.h>
 
 	//Math
 	#include <AuroraFW/Math/Vector2D.h>
