@@ -25,7 +25,7 @@
 
 namespace AuroraFW {
 	namespace Debug {
-		extern afwbool_t* Status;
+		extern afwbool_t Status;
 		afwvoid_t enableDebug(const afwbool_t& silent = false);
 		afwvoid_t disableDebug(const afwbool_t& silent = false);
 		inline afwbool_t getDebugStatus()
