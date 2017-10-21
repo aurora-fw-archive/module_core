@@ -68,9 +68,11 @@
 	#include <AuroraFW/Math/Vector2D.h>
 	#include <AuroraFW/Math/Vector3D.h>
 	#include <AuroraFW/Math/Vector4D.h>
+	#include <AuroraFW/Math/Matrix4x4.h>
 
 	//Image
 	#include <AuroraFW/Image/Image.h>
+	
 #endif
 
 #endif // AURORAFW_AURORA_H
