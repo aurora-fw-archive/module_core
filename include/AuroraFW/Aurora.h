@@ -62,11 +62,15 @@
 	#include <AuroraFW/GEngine/Input.h>
 	#include <AuroraFW/GEngine/AssetManager.h>
 	#include <AuroraFW/GEngine/AssetType.h>
+	#include <AuroraFW/GEngine/Color.h>
 
 	//Math
 	#include <AuroraFW/Math/Vector2D.h>
 	#include <AuroraFW/Math/Vector3D.h>
 	#include <AuroraFW/Math/Vector4D.h>
+
+	//Image
+	#include <AuroraFW/Image/Image.h>
 #endif
 
 #endif // AURORAFW_AURORA_H
