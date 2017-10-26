@@ -34,6 +34,10 @@
 #include <AuroraFW/Core/Debug.h>
 
 #ifndef AFW__PHC
+
+	// Audio
+	#include <AuroraFW/Audio/Audio.h>
+	
 	// Crypto
 	#include <AuroraFW/Crypto/AES.h>
 
