@@ -37,6 +37,7 @@
 
 	// Audio
 	#include <AuroraFW/Audio/Audio.h>
+	#include <AuroraFW/Audio/AudioBackend.h>
 	
 	// Crypto
 	#include <AuroraFW/Crypto/AES.h>
