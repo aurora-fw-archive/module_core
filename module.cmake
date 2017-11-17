@@ -33,7 +33,7 @@ endif()
 
 #target_link_libraries(aurorafw-core aurorafw-cli)
 
-set_target_properties(aurorafw-core PROPERTIES OUTPUT_NAME aurorafw-core)
+set_target_properties(aurorafw-core PROPERTIES OUTPUT_NAME "aurorafw-core_${AURORA_PLATFORM_PREFIX}_${AURORA_CPUARCH_PREFIX}")
 
 install(TARGETS aurorafw-core DESTINATION lib)
 
