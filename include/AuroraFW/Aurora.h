@@ -59,6 +59,9 @@
 	#include <AuroraFW/Info/RAM.h>
 	#include <AuroraFW/Info/OS.h>
 
+	// I/O
+	#include <AuroraFW/IO/File.h>
+
 	//GEngine
 	#include <AuroraFW/GEngine/Application.h>
 	#include <AuroraFW/GEngine/Window.h>
@@ -69,11 +72,16 @@
 	#include <AuroraFW/GEngine/AssetType.h>
 	#include <AuroraFW/GEngine/Color.h>
 
+	//OpenGL
+	#include <AuroraFW/GEngine/GL/Shader.h>
+	#include <AuroraFW/GEngine/GL/Program.h>
+
 	//Math
 	#include <AuroraFW/Math/Vector2D.h>
 	#include <AuroraFW/Math/Vector3D.h>
 	#include <AuroraFW/Math/Vector4D.h>
 	#include <AuroraFW/Math/Matrix4x4.h>
+	#include <AuroraFW/Math/Algorithm.h>
 
 	//Image
 	#include <AuroraFW/Image/Image.h>
