@@ -61,6 +61,7 @@
 
 	// I/O
 	#include <AuroraFW/IO/File.h>
+	#include <AuroraFW/IO/Timer.h>
 
 	//GEngine
 	#include <AuroraFW/GEngine/Application.h>
