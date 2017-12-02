@@ -67,13 +67,15 @@
 	#include <AuroraFW/GEngine/Application.h>
 	#include <AuroraFW/GEngine/Window.h>
 	#include <AuroraFW/GEngine/API.h>
-	#include <AuroraFW/GEngine/OpenGL.h>
 	#include <AuroraFW/GEngine/Input.h>
 	#include <AuroraFW/GEngine/AssetManager.h>
 	#include <AuroraFW/GEngine/AssetType.h>
 	#include <AuroraFW/GEngine/Color.h>
 
 	//OpenGL
+	#include <AuroraFW/GEngine/GL/Global.h>
+	#include <AuroraFW/GEngine/GL/OpenGL.h>
+	#include <AuroraFW/GEngine/GL/GL.h>
 	#include <AuroraFW/GEngine/GL/Shader.h>
 	#include <AuroraFW/GEngine/GL/Program.h>
 
