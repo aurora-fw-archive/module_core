@@ -1,0 +1,72 @@
+@startuml
+skinparam roundcorner 20
+skinparam arrowcolor black
+skinparam noteBackgroundColor PaleGoldenRod
+
+skinparam class {
+	backgroundColor LightGray
+	borderColor Black
+}
+
+!definelong exception(name, type = "T")
+class name <<(E,firebrick) exception>> #FCC {
+	+ name(const type)
+	..
+	+ {abstract} const type what() const throw()
+	--
+	- const type
+}
+!enddefinelong
+
+title Logging System
+
+enum LogLevel {
+	Silent = 0x0
+	Info = 0x1
+	Notice = 0x2
+	Warning = 0x4
+	Error = 0x8
+	Fatal = 0x10
+	Debug = 0x20
+	Verbose = 0x40
+}
+
+enum Format {
+	Message = 0x0
+	Date = 0x100
+	Time = 0x200
+	PID = 0x400
+	TID = 0x800
+	FileName = 0x1000
+	Line = 0x2000
+	LogLevel = 0x4000
+	NameTag = 0x8000
+}
+
+note as N1
+	<b><color:royalBlue>LogLevel</color></b> and <b><color:royalBlue>Format</color></b> can be setted by using
+	a hexadecimal code with two bytes, e.g: 0xFFFF.
+end note
+
+LogLevel .. N1
+Format .. N1
+
+class Log {
+	+ Log(LogLevel)
+	+ Log(LogLevel, Format)
+	+ Log(uint16)
+	..
+
+	--
+	- IO::Timer _time
+	- uint16 _flags
+}
+
+note as N2
+	<b>Application arguments for Log System:</b>
+		- debug
+		- verbose
+		- log=hex
+end note
+
+@enduml
