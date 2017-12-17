@@ -78,6 +78,8 @@
 	#include <AuroraFW/GEngine/GL/GL.h>
 	#include <AuroraFW/GEngine/GL/Shader.h>
 	#include <AuroraFW/GEngine/GL/Program.h>
+	#include <AuroraFW/GEngine/GL/Buffer.h>
+	#include <AuroraFW/GEngine/GL/VertexArray.h>
 
 	//Math
 	#include <AuroraFW/Math/Vector2D.h>
