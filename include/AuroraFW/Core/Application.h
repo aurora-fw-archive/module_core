@@ -25,7 +25,7 @@ namespace AuroraFW {
 	class AFW_EXPORT Application
 	{
 	public:
-		Application(void (*mainFunction)(), int argc = 0, char *argv[] = NULL);
+		Application(void (*mainFunction)() = []{}, int argc = 0, char *argv[] = NULL);
 		~Application();
 		static afwvoid_t ExitSuccess();
 		static afwvoid_t ExitFail();
