@@ -38,7 +38,7 @@
 	// Audio
 	#include <AuroraFW/Audio/Audio.h>
 	#include <AuroraFW/Audio/AudioBackend.h>
-	
+
 	// Crypto
 	#include <AuroraFW/Crypto/AES.h>
 
@@ -91,7 +91,6 @@
 
 	//Image
 	#include <AuroraFW/Image/Image.h>
-	
 #endif
 
 #endif // AURORAFW_AURORA_H

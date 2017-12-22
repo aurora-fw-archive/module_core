@@ -38,7 +38,7 @@ namespace AuroraFW {
 		{
 			std::cout << t;
 		}
-	
+
 		template <typename T, typename... R>
 		void __Log(const T& t, const R&... args)
 		{
