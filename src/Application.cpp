@@ -25,9 +25,8 @@
 namespace AuroraFW {
 	Application::Application(void (*mainFunction)(), int argc, char *argv[])
 	{
-		if(argc == 2)
-		{
-			if(std::string(argv[1]) == "--afw-debug")
+		for(int i = 0; i < argc; i++) {
+			if(std::string(argv[i]) == "--afw-debug")
 				Debug::enableDebug();
 		}
 		Debug::Log("creating new application");
