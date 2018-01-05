@@ -26,6 +26,7 @@ file(GLOB_RECURSE AURORAFW_MODULE_CORE_HEADERS ${AURORAFW_MODULE_CORE_DIR}/inclu
 file(GLOB_RECURSE AURORAFW_MODULE_CORE_SOURCE ${AURORAFW_MODULE_CORE_SOURCE_DIR}/*.*)
 
 add_library (aurorafw-core SHARED ${AURORAFW_MODULE_CORE_SOURCE})
+aurora_add_library_target(aurorafw-core)
 
 if(AURORA_PCH)
 	add_precompiled_header(aurorafw-core "${AURORAFW_MODULE_CORE_HEADERS}")

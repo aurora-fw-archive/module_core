@@ -25,13 +25,10 @@
 
 namespace AuroraFW {
 	namespace Debug {
-		extern afwbool_t Status;
-		afwvoid_t enableDebug(const afwbool_t& silent = false);
-		afwvoid_t disableDebug(const afwbool_t& silent = false);
-		inline afwbool_t getDebugStatus()
-		{
-			return Status;
-		}
+		static afwbool_t status = false;
+		AFW_EXPORT afwvoid_t enableDebug(const afwbool_t& silent = false);
+		AFW_EXPORT afwvoid_t disableDebug(const afwbool_t& silent = false);
+		AFW_EXPORT inline afwbool_t getDebugStatus() { return status; }
 
 		template <typename T>
 		void __Log(const T& t)
@@ -51,7 +48,7 @@ namespace AuroraFW {
 		{
 			// TODO: Windows ANSI integration
 			//       Needs to be tested on Windows and Apple platforms
-			if(Status == true)
+			if(status == true)
 			{
 				#ifdef AFW_TARGET_ENVIRONMENT_UNIX
 					std::cout << "\033[0m\033[1m[\033[1;36mDEBUG\033[0;1m] \033[0m";

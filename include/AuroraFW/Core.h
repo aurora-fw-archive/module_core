@@ -16,41 +16,10 @@
 ** will be met: https://www.gnu.org/licenses/lgpl-3.0.html.
 ****************************************************************************/
 
+#ifndef AURORAFW_CORE_H
+#define AURORAFW_CORE_H
+
+#include <AuroraFW/Core/Application.h>
 #include <AuroraFW/Core/Debug.h>
 
-namespace AuroraFW {
-	namespace Debug {
-		//afwbool_t isVerbose = false;
-		afwvoid_t enableDebug(const afwbool_t& silent)
-		{
-			if(status == true)
-			{
-				if(!silent)
-					Log("debug is already enabled");
-			}
-			else
-			{
-				status = true;
-				if(!silent)
-				{
-					Log("┌─┐┬ ┬┬─┐┌─┐┬─┐┌─┐  ┌─┐┬─┐┌─┐┌┬┐┌─┐┬ ┬┌─┐┬─┐┬┌─");
-					Log("├─┤│ │├┬┘│ │├┬┘├─┤  ├┤ ├┬┘├─┤│││├┤ ││││ │├┬┘├┴┐");
-					Log("┴ ┴└─┘┴└─└─┘┴└─┴ ┴  └  ┴└─┴ ┴┴ ┴└─┘└┴┘└─┘┴└─┴ ┴");
-					Log("debug is enabled");
-				}
-			}
-		}
-		afwvoid_t disableDebug(const afwbool_t& silent)
-		{
-			if(status == false)
-			{
-				if(!silent) Log("debug is already disabled");
-			}
-			else
-			{
-				status = false;
-				if(!silent) Log("debug is disabled");
-			}
-		}
-	}
-}
+#endif // AURORAFW_CORE_H
