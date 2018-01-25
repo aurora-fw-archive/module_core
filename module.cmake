@@ -32,7 +32,7 @@ if(AURORA_PCH)
 	add_precompiled_header(aurorafw-core "${AURORAFW_MODULE_CORE_HEADERS}")
 endif()
 
-#target_link_libraries(aurorafw-core aurorafw-cli)
+target_link_libraries(aurorafw-core aurorafw-stdl)
 
 set_target_properties(aurorafw-core PROPERTIES OUTPUT_NAME "aurorafw-core_${AURORA_PLATFORM_PREFIX}_${AURORA_CPUARCH_PREFIX}")
 

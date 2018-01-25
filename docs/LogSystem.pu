@@ -29,6 +29,9 @@ enum LogLevel {
 	Fatal = 0x10
 	Debug = 0x20
 	Verbose = 0x40
+}Fatal = 0x10
+	Debug = 0x20
+	Verbose = 0x40
 }
 
 enum Format {

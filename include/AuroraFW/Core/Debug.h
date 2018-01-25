@@ -20,7 +20,7 @@
 #define AURORAFW_CORE_DEBUG_H
 
 #include <AuroraFW/Global.h>
-#include <AuroraFW/STDL/Target/Environment.h>
+#include <AuroraFW/CoreLib/Target/System.h>
 #include <AuroraFW/STDL/STL/IOStream.h>
 
 namespace AuroraFW {

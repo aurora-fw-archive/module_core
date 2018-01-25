@@ -23,8 +23,8 @@
 
 
 // Standard Library
-#include <AuroraFW/STDL/Target.h>
-#include <AuroraFW/STDL/Type.h>
+#include <AuroraFW/CoreLib/Target.h>
+#include <AuroraFW/CoreLib/Type.h>
 #include <AuroraFW/STDL/Endian.h>
 #include <AuroraFW/STDL/String.h>
 #include <AuroraFW/STDL/CircularShift.h>

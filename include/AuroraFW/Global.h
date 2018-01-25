@@ -19,9 +19,9 @@
 #ifndef AURORAFW_GLOBAL_H
 #define AURORAFW_GLOBAL_H
 
-#include <AuroraFW/STDL/Type.h>
+#include <AuroraFW/CoreLib/Type.h>
 
-#include <AuroraFW/STDL/Target/Platform.h>
+#include <AuroraFW/CoreLib/Target/System.h>
 
 #ifdef AFW_TARGET_PLATFORM_WINDOWS
 	#ifdef AFW__COMPILING
@@ -33,14 +33,15 @@
 	#define AFW_EXPORT
 #endif //AFW_TARGET_PLATFORM_WINDOWS
 
-#include <AuroraFW/STDL/Target/Compiler.h>
+#include <AuroraFW/CoreLib/Target/Compiler.h>
 
 #ifdef AFW_TARGET_COMPILER_GNU
 	#define AFW_DEBUGBREAK(x) __builtin_trap();
 #elif defined(AFW_TARGET_COMPILER_MICROSOFT)
 	#define AFW_DEBUGBREAK(x) __debugbreak();
 #else
-	#include <AuroraFW/STDL/LibC/Signal.h>
+	//#include <AuroraFW/STDL/LibC/Signal.h>
+	#include<signal.h>
 	#define AFW_DEBUGBREAK(x) raise(SIGTRAP);
 #endif
 
