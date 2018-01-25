@@ -21,17 +21,18 @@
 
 #include <AuroraFW/Global.h>
 
-
-// Standard Library
-#include <AuroraFW/CoreLib/Target.h>
-#include <AuroraFW/CoreLib/Type.h>
-#include <AuroraFW/STDL/Endian.h>
-#include <AuroraFW/STDL/String.h>
-#include <AuroraFW/STDL/CircularShift.h>
-
 // Core
 #include <AuroraFW/Core/Application.h>
 #include <AuroraFW/Core/Debug.h>
+
+// Standard Library
+
+// CoreLib
+#include <AuroraFW/CoreLib/String.h>
+#include <AuroraFW/CoreLib/CircularShift.h>
+#include <AuroraFW/CoreLib/Target.h>
+#include <AuroraFW/CoreLib/Type.h>
+#include <AuroraFW/CoreLib/Endian.h>
 
 #ifndef AFW__PHC
 
