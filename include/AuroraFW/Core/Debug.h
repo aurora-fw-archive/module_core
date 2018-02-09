@@ -24,43 +24,47 @@
 #include <AuroraFW/STDL/STL/IOStream.h>
 
 namespace AuroraFW {
-	namespace Debug {
-		static afwbool_t status = false;
-		AFW_EXPORT afwvoid_t enableDebug(const afwbool_t& silent = false);
-		AFW_EXPORT afwvoid_t disableDebug(const afwbool_t& silent = false);
-		AFW_EXPORT inline afwbool_t getDebugStatus() { return status; }
+	class AFW_EXPORT DebugManager {
+		private:
+			static bool _status;
 
-		template <typename T>
-		void __Log(const T& t)
-		{
-			std::cout << t;
-		}
-
-		template <typename T, typename... R>
-		void __Log(const T& t, const R&... args)
-		{
-			std::cout << t;
-			__Log(args...);
-		}
-
-		template <typename... T>
-		void Log(const T&... args)
-		{
-			// TODO: Windows ANSI integration
-			//       Needs to be tested on Windows and Apple platforms
-			if(status == true)
+			template <typename T>
+			static void _Log(const T& t)
 			{
-				#ifdef AFW_TARGET_ENVIRONMENT_UNIX
-					std::cout << "\033[0m\033[1m[\033[1;36mDEBUG\033[0;1m] \033[0m";
-				#else
-					std::cout << "[DEBUG] ";
-				#endif
-				__Log(args...);
-				std::cout << std::endl;
-				return;
+				std::cout << t;
 			}
-		}
-	}
+
+			template <typename T, typename... R>
+			static void _Log(const T& t, const R&... args)
+			{
+				std::cout << t;
+				_Log(args...);
+			}
+
+		public:
+			static afwvoid_t enable(const afwbool_t& silent = false);
+			static afwvoid_t disable(const afwbool_t& silent = false);
+			inline static afwbool_t getStatus() { return _status; }
+
+			template <typename... T>
+			static void Log(const T&... args)
+			{
+				// TODO: Windows ANSI integration
+				//       Needs to be tested on Windows and Apple platforms
+				if(_status)
+				{
+					//Temporary code
+					#ifdef AFW_TARGET_ENVIRONMENT_UNIX
+						std::cout << "\033[0m\033[1m[\033[1;36mDEBUG\033[0;1m] \033[0m";
+					#else
+						std::cout << "[DEBUG] ";
+					#endif
+					_Log(args...);
+					std::cout << std::endl;
+					return;
+				}
+			}
+	};
 }
 
 #endif // AURORAFW_CORE_DEBUG_H

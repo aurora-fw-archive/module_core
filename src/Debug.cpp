@@ -19,38 +19,37 @@
 #include <AuroraFW/Core/Debug.h>
 
 namespace AuroraFW {
-	namespace Debug {
-		//afwbool_t isVerbose = false;
-		afwvoid_t enableDebug(const afwbool_t& silent)
+	bool DebugManager::_status = false;
+
+	afwvoid_t DebugManager::enable(const afwbool_t& silent)
+	{
+		if(_status)
 		{
-			if(status == true)
+			if(!silent)
+				Log("debug is already enabled");
+		}
+		else
+		{
+			_status = true;
+			if(!silent)
 			{
-				if(!silent)
-					Log("debug is already enabled");
-			}
-			else
-			{
-				status = true;
-				if(!silent)
-				{
-					Log("┌─┐┬ ┬┬─┐┌─┐┬─┐┌─┐  ┌─┐┬─┐┌─┐┌┬┐┌─┐┬ ┬┌─┐┬─┐┬┌─");
-					Log("├─┤│ │├┬┘│ │├┬┘├─┤  ├┤ ├┬┘├─┤│││├┤ ││││ │├┬┘├┴┐");
-					Log("┴ ┴└─┘┴└─└─┘┴└─┴ ┴  └  ┴└─┴ ┴┴ ┴└─┘└┴┘└─┘┴└─┴ ┴");
-					Log("debug is enabled");
-				}
+				Log("┌─┐┬ ┬┬─┐┌─┐┬─┐┌─┐  ┌─┐┬─┐┌─┐┌┬┐┌─┐┬ ┬┌─┐┬─┐┬┌─");
+				Log("├─┤│ │├┬┘│ │├┬┘├─┤  ├┤ ├┬┘├─┤│││├┤ ││││ │├┬┘├┴┐");
+				Log("┴ ┴└─┘┴└─└─┘┴└─┴ ┴  └  ┴└─┴ ┴┴ ┴└─┘└┴┘└─┘┴└─┴ ┴");
+				Log("debug is enabled");
 			}
 		}
-		afwvoid_t disableDebug(const afwbool_t& silent)
+	}
+	afwvoid_t DebugManager::disable(const afwbool_t& silent)
+	{
+		if(_status == false)
 		{
-			if(status == false)
-			{
-				if(!silent) Log("debug is already disabled");
-			}
-			else
-			{
-				status = false;
-				if(!silent) Log("debug is disabled");
-			}
+			if(!silent) Log("debug is already disabled");
+		}
+		else
+		{
+			_status = false;
+			if(!silent) Log("debug is disabled");
 		}
 	}
 }

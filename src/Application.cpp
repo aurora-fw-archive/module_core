@@ -27,24 +27,24 @@ namespace AuroraFW {
 	{
 		for(int i = 0; i < argc; i++) {
 			if(std::string(argv[i]) == "--afw-debug")
-				Debug::enableDebug();
+				DebugManager::enable();
 		}
-		Debug::Log("creating new application");
-		Debug::Log("application is created.");
+		DebugManager::Log("creating new application");
+		DebugManager::Log("application is created.");
 		(*mainFunction)();
 	}
 	Application::~Application()
 	{
-		Debug::Log("application is destroyed.");
+		DebugManager::Log("application is destroyed.");
 	}
 	void Application::ExitSuccess()
 	{
-		Debug::Log("application return success code: ", EXIT_SUCCESS);
+		DebugManager::Log("application return success code: ", EXIT_SUCCESS);
 		exit(EXIT_SUCCESS);
 	}
 	void Application::ExitFail()
 	{
-		Debug::Log("application return error code: ", EXIT_FAILURE);
+		DebugManager::Log("application return error code: ", EXIT_FAILURE);
 		exit(EXIT_FAILURE);
 	}
 }
