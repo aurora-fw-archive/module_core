@@ -20,7 +20,7 @@
 #include <string>
 #include <AuroraFW/Core/Application.h>
 #include <AuroraFW/CLI/Log.h>
-#include <AuroraFW/Core/Debug.h>
+#include <AuroraFW/Core/DebugManager.h>
 
 namespace AuroraFW {
 	Application::Application(void (*mainFunction)(), int argc, char *argv[])

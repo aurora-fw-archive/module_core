@@ -20,6 +20,6 @@
 #define AURORAFW_CORE_H
 
 #include <AuroraFW/Core/Application.h>
-#include <AuroraFW/Core/Debug.h>
+#include <AuroraFW/Core/DebugManager.h>
 
 #endif // AURORAFW_CORE_H
