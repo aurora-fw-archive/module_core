@@ -21,7 +21,7 @@
 namespace AuroraFW {
 	bool DebugManager::_status = false;
 
-	afwvoid_t DebugManager::enable(const afwbool_t& silent)
+	void DebugManager::enable(const bool& silent)
 	{
 		if(_status)
 		{
@@ -40,7 +40,7 @@ namespace AuroraFW {
 			}
 		}
 	}
-	afwvoid_t DebugManager::disable(const afwbool_t& silent)
+	void DebugManager::disable(const bool& silent)
 	{
 		if(_status == false)
 		{

@@ -20,15 +20,20 @@
 #define AURORAFW_CORE_APPLICATION_H
 
 #include <AuroraFW/Global.h>
+#if(AFW_TARGET_PRAGMA_ONCE_SUPPORT)
+	#pragma once
+#endif
+
+#include <AuroraFW/Internal/Config.h>
 
 namespace AuroraFW {
-	class AFW_EXPORT Application
+	class AFW_API Application
 	{
 	public:
 		Application(void (*mainFunction)() = []{}, int argc = 0, char *argv[] = NULL);
 		~Application();
-		static afwvoid_t ExitSuccess();
-		static afwvoid_t ExitFail();
+		static void ExitSuccess();
+		static void ExitFail();
 	};
 }
 

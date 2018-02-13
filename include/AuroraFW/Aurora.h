@@ -20,6 +20,11 @@
 #define AURORAFW_AURORA_H
 
 #include <AuroraFW/Global.h>
+#if(AFW_TARGET_PRAGMA_ONCE_SUPPORT)
+	#pragma once
+#endif
+
+#include <AuroraFW/Internal/Config.h>
 
 // Core
 #include <AuroraFW/Core/Application.h>
@@ -57,18 +62,17 @@
 	#include <AuroraFW/CLI/Output.h>
 	#include <AuroraFW/CLI/Input.h>
 
-	// Information
-	#include <AuroraFW/Info/RAM.h>
-	#include <AuroraFW/Info/OS.h>
-
 	// I/O
 	#include <AuroraFW/IO/File.h>
 	#include <AuroraFW/IO/Timer.h>
+	#include <AuroraFW/IO/Info/Memory.h>
+	#include <AuroraFW/IO/Info/System.h>
+	#include <AuroraFW/IO/MemoryManager.h>
 
 	//GEngine
 	#include <AuroraFW/GEngine/Application.h>
 	#include <AuroraFW/GEngine/Window.h>
-	#include <AuroraFW/GEngine/API.h>
+	#include <AuroraFW/GEngine/API/Context.h>
 	#include <AuroraFW/GEngine/Input.h>
 	#include <AuroraFW/GEngine/AssetManager.h>
 	#include <AuroraFW/GEngine/AssetType.h>

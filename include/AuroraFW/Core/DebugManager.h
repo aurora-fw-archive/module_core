@@ -20,11 +20,16 @@
 #define AURORAFW_CORE_DEBUG_H
 
 #include <AuroraFW/Global.h>
-#include <AuroraFW/CoreLib/Target/System.h>
+#if(AFW_TARGET_PRAGMA_ONCE_SUPPORT)
+	#pragma once
+#endif
+
+#include <AuroraFW/Internal/Config.h>
+
 #include <AuroraFW/STDL/STL/IOStream.h>
 
 namespace AuroraFW {
-	class AFW_EXPORT DebugManager {
+	class AFW_API DebugManager {
 		private:
 			static bool _status;
 
@@ -42,9 +47,9 @@ namespace AuroraFW {
 			}
 
 		public:
-			static afwvoid_t enable(const afwbool_t& silent = false);
-			static afwvoid_t disable(const afwbool_t& silent = false);
-			inline static afwbool_t getStatus() { return _status; }
+			static void enable(const bool& silent = false);
+			static void disable(const bool& silent = false);
+			inline static bool getStatus() { return _status; }
 
 			template <typename... T>
 			static void Log(const T&... args)

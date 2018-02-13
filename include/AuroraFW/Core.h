@@ -19,6 +19,11 @@
 #ifndef AURORAFW_CORE_H
 #define AURORAFW_CORE_H
 
+#include <AuroraFW/Global.h>
+#if(AFW_TARGET_PRAGMA_ONCE_SUPPORT)
+	#pragma once
+#endif
+
 #include <AuroraFW/Core/Application.h>
 #include <AuroraFW/Core/DebugManager.h>
 
