@@ -69,15 +69,6 @@
 	#include <AuroraFW/IO/Info/System.h>
 	#include <AuroraFW/IO/MemoryManager.h>
 
-	//GEngine
-	#include <AuroraFW/GEngine/Application.h>
-	#include <AuroraFW/GEngine/Window.h>
-	#include <AuroraFW/GEngine/API/Context.h>
-	#include <AuroraFW/GEngine/Input.h>
-	#include <AuroraFW/GEngine/AssetManager.h>
-	#include <AuroraFW/GEngine/AssetType.h>
-	#include <AuroraFW/GEngine/Color.h>
-
 	//OpenGL
 	#include <AuroraFW/GEngine/GL/Global.h>
 	#include <AuroraFW/GEngine/GL/OpenGL.h>
@@ -86,6 +77,16 @@
 	#include <AuroraFW/GEngine/GL/Program.h>
 	#include <AuroraFW/GEngine/GL/Buffer.h>
 	#include <AuroraFW/GEngine/GL/VertexArray.h>
+
+	//GEngine
+	#include <AuroraFW/GEngine/Application.h>
+	#include <AuroraFW/GEngine/Window.h>
+	#include <AuroraFW/GEngine/API/Context.h>
+	#include <AuroraFW/GEngine/Input.h>
+	#include <AuroraFW/GEngine/AssetManager.h>
+	#include <AuroraFW/GEngine/AssetType.h>
+	#include <AuroraFW/GEngine/Color.h>
+	#include <AuroraFW/GEngine/Renderer.h>
 
 	//Math
 	#include <AuroraFW/Math/Vector2D.h>
