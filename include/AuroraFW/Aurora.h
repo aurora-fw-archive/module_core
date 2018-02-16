@@ -38,6 +38,8 @@
 #include <AuroraFW/CoreLib/Target.h>
 #include <AuroraFW/CoreLib/Type.h>
 #include <AuroraFW/CoreLib/Endian.h>
+#include <AuroraFW/CoreLib/MemoryManager.h>
+	#include <AuroraFW/CoreLib/Allocator.h>
 
 #ifndef AFW__PHC
 
@@ -67,7 +69,6 @@
 	#include <AuroraFW/IO/Timer.h>
 	#include <AuroraFW/IO/Info/Memory.h>
 	#include <AuroraFW/IO/Info/System.h>
-	#include <AuroraFW/IO/MemoryManager.h>
 
 	//OpenGL
 	#include <AuroraFW/GEngine/GL/Global.h>

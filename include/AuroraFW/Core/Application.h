@@ -26,14 +26,19 @@
 
 #include <AuroraFW/Internal/Config.h>
 
+#include <AuroraFW/STDL/STL/String.h>
+#include <AuroraFW/STDL/STL/Vector.h>
+
 namespace AuroraFW {
-	class AFW_API Application
+	struct AFW_API Application
 	{
-	public:
-		Application(void (*mainFunction)() = []{}, int argc = 0, char *argv[] = NULL);
+		Application(int argc = 0, char *argv[] = NULL, afwslot (*mainFunction)(Application*) = [](Application*){});
 		~Application();
+
 		static void ExitSuccess();
 		static void ExitFail();
+
+		std::vector<std::string> args;
 	};
 }
 

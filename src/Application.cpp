@@ -16,22 +16,23 @@
 ** will be met: https://www.gnu.org/licenses/lgpl-3.0.html.
 ****************************************************************************/
 
-#include <iostream>
-#include <string>
 #include <AuroraFW/Core/Application.h>
 #include <AuroraFW/CLI/Log.h>
 #include <AuroraFW/Core/DebugManager.h>
 
+#include <AuroraFW/STDL/STL/IOStream.h>
+
 namespace AuroraFW {
-	Application::Application(void (*mainFunction)(), int argc, char *argv[])
+	Application::Application(int argc, char *argv[], void (*mainFunction)(Application*))
 	{
-		for(int i = 0; i < argc; i++) {
-			if(std::string(argv[i]) == "--afw-debug")
+		args = std::vector<std::string>(argv + 1, argv + argc);
+		for (std::vector<std::string>::iterator i = args.begin(); i != args.end(); ++i) {
+			if(*i == "--afw-debug")
 				DebugManager::enable();
 		}
 		DebugManager::Log("creating new application");
 		DebugManager::Log("application is created.");
-		(*mainFunction)();
+		(*mainFunction)(this);
 	}
 	Application::~Application()
 	{
