@@ -38,7 +38,7 @@ namespace AuroraFW {
 		static void ExitSuccess();
 		static void ExitFail();
 
-		std::vector<std::string> args;
+		std::vector<std::string>* args;
 	};
 }
 
