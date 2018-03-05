@@ -16,30 +16,27 @@
 ** will be met: https://www.gnu.org/licenses/lgpl-3.0.html.
 ****************************************************************************/
 
-#ifndef AURORAFW_CORE_APPLICATION_H
-#define AURORAFW_CORE_APPLICATION_H
-
-#include <AuroraFW/Global.h>
-#if(AFW_TARGET_PRAGMA_ONCE_SUPPORT)
-	#pragma once
-#endif
-
-#include <AuroraFW/Internal/Config.h>
-
-#include <AuroraFW/STDL/STL/String.h>
-#include <AuroraFW/STDL/STL/Vector.h>
+#include <AuroraFW/Core/InputListener.h>
 
 namespace AuroraFW {
-	struct AFW_API Application
-	{
-		Application(int argc = 0, char *argv[] = NULL, void (mainFunction)(Application*) = [](Application*){});
-		~Application();
+	InputListener::~InputListener()
+	{}
 
-		static void ExitSuccess();
-		static void ExitFail();
+	bool InputListener::keyPressed(const KeyboardEvent& )
+	{return true;}
 
-		std::vector<std::string>* args;
-	};
+	bool InputListener::keyReleased(const KeyboardEvent& )
+	{return true;}
+
+	bool InputListener::mousePressed(const MouseButtonEvent& )
+	{return true;}
+
+	bool InputListener::mouseReleased(const MouseButtonEvent& )
+	{return true;}
+
+	bool InputListener::mouseMoved(const MouseMotionEvent& )
+	{return true;}
+	
+	bool InputListener::mouseScrolled(const MouseScrollEvent& )
+	{return true;}
 }
-
-#endif // AURORAFW_CORE_APPLICATION_H

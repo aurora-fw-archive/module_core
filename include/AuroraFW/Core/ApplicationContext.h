@@ -16,8 +16,8 @@
 ** will be met: https://www.gnu.org/licenses/lgpl-3.0.html.
 ****************************************************************************/
 
-#ifndef AURORAFW_CORE_APPLICATION_H
-#define AURORAFW_CORE_APPLICATION_H
+#ifndef AURORAFW_CORE_APPLICATIONCONTEXT_H
+#define AURORAFW_CORE_APPLICATIONCONTEXT_H
 
 #include <AuroraFW/Global.h>
 #if(AFW_TARGET_PRAGMA_ONCE_SUPPORT)
@@ -29,17 +29,31 @@
 #include <AuroraFW/STDL/STL/String.h>
 #include <AuroraFW/STDL/STL/Vector.h>
 
+#include <AuroraFW/Core/OptionHandler.h>
+
 namespace AuroraFW {
-	struct AFW_API Application
+	class AFW_API ApplicationContext
 	{
-		Application(int argc = 0, char *argv[] = NULL, void (mainFunction)(Application*) = [](Application*){});
-		~Application();
+	public:
+		explicit ApplicationContext(const std::string = "AuroraFW Application", int = 0, char** = AFW_NULL);
+		virtual ~ApplicationContext();
 
-		static void ExitSuccess();
-		static void ExitFail();
+		virtual void onStart();
+		virtual void onClose();
+		void start();
+		void close();
 
-		std::vector<std::string>* args;
+		std::string getName();
+		void setName(std::string );
+
+	private:
+		virtual void _internalSetName(std::string );
+		virtual void _internalStart();
+		virtual void _internalClose();
+	
+		std::string _name;
+		OptionHandler _opts;
 	};
 }
 
-#endif // AURORAFW_CORE_APPLICATION_H
+#endif // AURORAFW_CORE_APPLICATIONCONTEXT_H

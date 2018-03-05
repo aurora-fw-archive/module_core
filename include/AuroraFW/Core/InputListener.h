@@ -16,8 +16,8 @@
 ** will be met: https://www.gnu.org/licenses/lgpl-3.0.html.
 ****************************************************************************/
 
-#ifndef AURORAFW_CORE_APPLICATION_H
-#define AURORAFW_CORE_APPLICATION_H
+#ifndef AURORAFW_CORE_INPUTLISTENER_H
+#define AURORAFW_CORE_INPUTLISTENER_H
 
 #include <AuroraFW/Global.h>
 #if(AFW_TARGET_PRAGMA_ONCE_SUPPORT)
@@ -26,20 +26,33 @@
 
 #include <AuroraFW/Internal/Config.h>
 
-#include <AuroraFW/STDL/STL/String.h>
-#include <AuroraFW/STDL/STL/Vector.h>
-
 namespace AuroraFW {
-	struct AFW_API Application
-	{
-		Application(int argc = 0, char *argv[] = NULL, void (mainFunction)(Application*) = [](Application*){});
-		~Application();
+	struct AFW_API KeyboardEvent {
+		int key, scancode, mods;
+	};
 
-		static void ExitSuccess();
-		static void ExitFail();
+	struct AFW_API MouseButtonEvent {
+		int btn, mods;
+	};
 
-		std::vector<std::string>* args;
+	struct AFW_API MouseMotionEvent {
+		double xpos, ypos;
+	};
+
+	struct AFW_API MouseScrollEvent {
+		double xoffset, yoffset;
+	};
+
+	class AFW_API InputListener {
+	public:
+		virtual ~InputListener();
+		virtual bool keyPressed(const KeyboardEvent& );
+		virtual bool keyReleased(const KeyboardEvent& );
+		virtual bool mousePressed(const MouseButtonEvent& );
+		virtual bool mouseReleased(const MouseButtonEvent& );
+		virtual bool mouseMoved(const MouseMotionEvent& );
+		virtual bool mouseScrolled(const MouseScrollEvent& );
 	};
 }
 
-#endif // AURORAFW_CORE_APPLICATION_H
+#endif // AURORAFW_CORE_INPUTLISTENER_H

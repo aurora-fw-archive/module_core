@@ -16,8 +16,8 @@
 ** will be met: https://www.gnu.org/licenses/lgpl-3.0.html.
 ****************************************************************************/
 
-#ifndef AURORAFW_CORE_APPLICATION_H
-#define AURORAFW_CORE_APPLICATION_H
+#ifndef AURORAFW_CORE_OPTIONHANDLER_H
+#define AURORAFW_CORE_OPTIONHANDLER_H
 
 #include <AuroraFW/Global.h>
 #if(AFW_TARGET_PRAGMA_ONCE_SUPPORT)
@@ -26,20 +26,63 @@
 
 #include <AuroraFW/Internal/Config.h>
 
-#include <AuroraFW/STDL/STL/String.h>
-#include <AuroraFW/STDL/STL/Vector.h>
+#include <exception>
+#include <vector>
+#include <map>
 
 namespace AuroraFW {
-	struct AFW_API Application
+	class OptionHandler;
+
+	struct AFW_API SplitedOptionElement {
+		friend OptionHandler;
+
+		bool active;
+		int count;
+	private:
+		std::string optLong;
+		std::string optShort;
+		std::string desc;
+
+		int valpos;
+	};
+
+	struct AFW_API OptionElement
 	{
-		Application(int argc = 0, char *argv[] = NULL, void (mainFunction)(Application*) = [](Application*){});
-		~Application();
+		std::string opt;
+		std::string desc;
+	};
 
-		static void ExitSuccess();
-		static void ExitFail();
+	enum OptionHandlerType
+	{
+		POSIX,
+		Win32,
+		None
+	};
 
-		std::vector<std::string>* args;
+	class AFW_API OptionHandler {
+	public:
+		OptionHandler(int , char** ,
+#if defined(AFW_TARGET_PLATFORM_WINDOWS) && !defined(AFW_TARGET_ENVIRONMENT_POSIX)
+			OptionHandlerType = Win32);
+#else
+			OptionHandlerType = POSIX);
+#endif
+
+		void addOption(OptionElement);
+		inline void addOption(std::string opt, std::string desc) { addOption({opt, desc}); }
+		void addOptions(std::vector<OptionElement> );
+
+		SplitedOptionElement getOption(std::string );
+		std::string getValue(SplitedOptionElement);
+		inline std::string getValue(std::string opt) { return getValue(getOption(opt)); }
+
+		void printOptions(std::string = "  %s\t%s\t\t%s");
+
+	private:
+		std::vector<std::string> _args;
+		std::vector<SplitedOptionElement> _opts;
+		OptionHandlerType _type;
 	};
 }
 
-#endif // AURORAFW_CORE_APPLICATION_H
+#endif // AURORAFW_CORE_OPTIONHANDLER_H

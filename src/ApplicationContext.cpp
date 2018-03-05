@@ -16,30 +16,58 @@
 ** will be met: https://www.gnu.org/licenses/lgpl-3.0.html.
 ****************************************************************************/
 
-#ifndef AURORAFW_CORE_APPLICATION_H
-#define AURORAFW_CORE_APPLICATION_H
-
-#include <AuroraFW/Global.h>
-#if(AFW_TARGET_PRAGMA_ONCE_SUPPORT)
-	#pragma once
-#endif
-
-#include <AuroraFW/Internal/Config.h>
-
-#include <AuroraFW/STDL/STL/String.h>
-#include <AuroraFW/STDL/STL/Vector.h>
+#include <AuroraFW/Core/ApplicationContext.h>
+#include <AuroraFW/Core/DebugManager.h>
 
 namespace AuroraFW {
-	struct AFW_API Application
+	ApplicationContext::ApplicationContext(const std::string name, int argc, char* argv[])
+		: _name(name), _opts(OptionHandler(argc, argv))
 	{
-		Application(int argc = 0, char *argv[] = NULL, void (mainFunction)(Application*) = [](Application*){});
-		~Application();
+		_opts.addOption({"afw-debug", "Enable the aurora built-in debug logger"});
+		if(_opts.getOption("afw-debug").active)
+			DebugManager::enable();
 
-		static void ExitSuccess();
-		static void ExitFail();
+		DebugManager::Log("creating new application");
+		DebugManager::Log("application is created.");
+	}
 
-		std::vector<std::string>* args;
-	};
+	ApplicationContext::~ApplicationContext()
+	{
+		DebugManager::Log("application is destroyed.");
+	}
+
+	void ApplicationContext::start()
+	{
+		DebugManager::Log("application is starting");
+		_internalStart();
+		onStart();
+		DebugManager::Log("application started");
+	}
+
+	void ApplicationContext::close()
+	{
+		DebugManager::Log("application is closing");
+		_internalClose();
+		onClose();
+		DebugManager::Log("application closed");
+	}
+
+	void ApplicationContext::_internalStart()
+	{
+
+	}
+
+	void ApplicationContext::_internalClose()
+	{
+
+	}
+
+	void ApplicationContext::_internalSetName(std::string )
+	{}
+
+	void ApplicationContext::onStart()
+	{}
+
+	void ApplicationContext::onClose()
+	{}
 }
-
-#endif // AURORAFW_CORE_APPLICATION_H
