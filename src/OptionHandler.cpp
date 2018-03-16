@@ -96,6 +96,9 @@ namespace AuroraFW {
 				sopte.active = true;
 				sopte.count = i - _args.begin();
 			}
+			else {
+				sopte.active = false;
+			}
 
 		_opts.push_back(sopte);
 	}
