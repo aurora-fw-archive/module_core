@@ -44,7 +44,8 @@
 #ifndef AFW__PHC
 
 	// Audio
-	#include <AuroraFW/Audio/Audio.h>
+	#include <AuroraFW/Audio/AudioInput.h>
+	#include <AuroraFW/Audio/AudioOutput.h>
 	#include <AuroraFW/Audio/AudioBackend.h>
 	#include <AuroraFW/Audio/AudioUtils.h>
 
