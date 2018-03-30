@@ -87,7 +87,10 @@
 	#include <AuroraFW/GEngine/AssetManager.h>
 	#include <AuroraFW/GEngine/AssetType.h>
 	#include <AuroraFW/GEngine/Color.h>
-	#include <AuroraFW/GEngine/Renderer.h>
+
+	//GEngine API
+	#include <AuroraFW/GEngine/API/Context.h>
+	#include <AuroraFW/GEngine/API/Renderer.h>
 
 	//Math
 	#include <AuroraFW/Math/Vector2D.h>

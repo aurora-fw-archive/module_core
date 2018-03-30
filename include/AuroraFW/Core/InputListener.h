@@ -26,13 +26,17 @@
 
 #include <AuroraFW/Internal/Config.h>
 
+#include <AuroraFW/GEngine/Input.h>
+
 namespace AuroraFW {
 	struct AFW_API KeyboardEvent {
-		int key, scancode, mods;
+		int key, scancode;
+		ushort mods;
 	};
 
 	struct AFW_API MouseButtonEvent {
-		int btn, mods;
+		int btn;
+		ushort mods;
 	};
 
 	struct AFW_API MouseMotionEvent {
