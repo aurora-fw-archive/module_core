@@ -56,7 +56,6 @@
 	#include <AuroraFW/GUI/Window.h>
 	#include <AuroraFW/GUI/Label.h>
 	#include <AuroraFW/GUI/Button.h>
-	#include <AuroraFW/GUI/Layout.h>
 	#include <AuroraFW/GUI/Application.h>
 
 	// Shell
