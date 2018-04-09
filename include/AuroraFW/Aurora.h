@@ -39,7 +39,7 @@
 #include <AuroraFW/CoreLib/Type.h>
 #include <AuroraFW/CoreLib/Endian.h>
 #include <AuroraFW/CoreLib/MemoryManager.h>
-	#include <AuroraFW/CoreLib/Allocator.h>
+#include <AuroraFW/CoreLib/Allocator.h>
 
 #ifndef AFW__PHC
 
@@ -74,8 +74,8 @@
 	#include <AuroraFW/GEngine/GL/Global.h>
 	#include <AuroraFW/GEngine/GL/OpenGL.h>
 	#include <AuroraFW/GEngine/GL/GL.h>
-	#include <AuroraFW/GEngine/GL/Shader.h>
-	#include <AuroraFW/GEngine/GL/Program.h>
+	#include <AuroraFW/GEngine/GL/RTShader.h>
+	#include <AuroraFW/GEngine/GL/RTShaderPipeline.h>
 	#include <AuroraFW/GEngine/GL/Buffer.h>
 	#include <AuroraFW/GEngine/GL/VertexArray.h>
 
@@ -90,6 +90,7 @@
 
 	//GEngine API
 	#include <AuroraFW/GEngine/API/Context.h>
+	#include <AuroraFW/GEngine/API/Texture.h>
 	#include <AuroraFW/GEngine/API/Renderer.h>
 
 	//Math

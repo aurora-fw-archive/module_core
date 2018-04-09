@@ -21,7 +21,6 @@
 #include <AuroraFW/Core/DebugManager.h>
 
 #include <AuroraFW/STDL/STL/IOStream.h>
-#include <AuroraFW/CoreLib/Allocator.h>
 
 namespace AuroraFW {
 	Application::Application(int argc, char *argv[], void (*mainFunction)(Application*))
