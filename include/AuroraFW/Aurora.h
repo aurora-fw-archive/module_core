@@ -86,8 +86,6 @@
 	#include <AuroraFW/GEngine/Input.h>
 	#include <AuroraFW/GEngine/AssetManager.h>
 	#include <AuroraFW/GEngine/AssetType.h>
-	#include <AuroraFW/GEngine/Color.h>
-
 	//GEngine API
 	#include <AuroraFW/GEngine/API/Context.h>
 	#include <AuroraFW/GEngine/API/Texture.h>
@@ -103,6 +101,7 @@
 
 	//Image
 	#include <AuroraFW/Image/Image.h>
+	#include <AuroraFW/Image/BaseColor.h>
 #endif
 
 #endif // AURORAFW_AURORA_H
