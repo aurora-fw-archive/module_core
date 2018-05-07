@@ -125,6 +125,7 @@ Makefile
 .tmp/
 
 #Binaries
-bin/*.so
-bin/dbg/*.so
-bin/dbg/*.out
+out/*
+
+#DUB
+.dub/

@@ -2,5 +2,6 @@
 	"name": "core",
 	"description": "Module containing core functionality and various interfaces",
 	"targetType": "library",
+	"targetPath": "out/bin",
 	"sourcePaths": ["source"]
 }
