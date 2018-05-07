@@ -16,30 +16,45 @@
 
 message(STATUS "Loading core module...")
 
-if (NOT CONFIGURED_ONCE)
-	set(AURORAFW_MODULE_CORE_SOURCE_DIR ${AURORAFW_MODULE_CORE_DIR}/src)
+if(AURORA_DLANG)
+	include_directories(${AURORAFW_MODULE_CORE_DIR}/source)
+
+	if (NOT CONFIGURED_ONCE)
+		set(AURORAFW_MODULE_CORE_SOURCE_DIR ${AURORAFW_MODULE_CORE_DIR}/source)
+	endif()
+	file(GLOB_RECURSE AURORAFW_MODULE_CORE_SOURCE ${AURORAFW_MODULE_CORE_SOURCE_DIR}/*.d)
+else()
+	include_directories(${AURORAFW_MODULE_CORE_DIR}/include)
+
+	if (NOT CONFIGURED_ONCE)
+		set(AURORAFW_MODULE_CORE_SOURCE_DIR ${AURORAFW_MODULE_CORE_DIR}/src)
+	endif()
+
+	file(GLOB_RECURSE AURORAFW_MODULE_CORE_HEADERS ${AURORAFW_MODULE_CORE_DIR}/include/*.h)
+	file(GLOB_RECURSE AURORAFW_MODULE_CORE_SOURCE ${AURORAFW_MODULE_CORE_SOURCE_DIR}/*.cpp)
 endif()
-
-include_directories(${AURORAFW_MODULE_CORE_DIR}/include)
-
-file(GLOB_RECURSE AURORAFW_MODULE_CORE_HEADERS ${AURORAFW_MODULE_CORE_DIR}/include/*.*)
-file(GLOB_RECURSE AURORAFW_MODULE_CORE_SOURCE ${AURORAFW_MODULE_CORE_SOURCE_DIR}/*.*)
 
 add_library (aurorafw-core SHARED ${AURORAFW_MODULE_CORE_SOURCE})
+
 aurorafw_add_library_target(aurorafw-core SHARED)
-
-if(AURORAFW_PCH)
-	add_precompiled_header(aurorafw-core "${AURORAFW_MODULE_CORE_HEADERS}")
-endif()
-
-target_link_libraries(aurorafw-core aurorafw-corelib)
-
-set_target_properties(aurorafw-core PROPERTIES OUTPUT_NAME "aurorafw-core_${AURORAFW_PLATFORM_PREFIX}_${AURORAFW_CPUARCH_PREFIX}")
+#target_link_libraries(aurorafw-core aurorafw-corelib)
 
 install(TARGETS aurorafw-core DESTINATION lib)
 
-file(GLOB AURORAFW_MODULE_CORE_HEADERS_AURORAFW ${AURORAFW_MODULE_CORE_DIR}/include/AuroraFW/*.*)
-file(GLOB AURORAFW_MODULE_CORE_HEADERS_CORE ${AURORAFW_MODULE_CORE_DIR}/include/AuroraFW/Core/*.*)
+set_target_properties(aurorafw-core PROPERTIES OUTPUT_NAME "aurorafw-core_${AURORAFW_PLATFORM_PREFIX}_${AURORAFW_CPUARCH_PREFIX}")
 
-install(FILES ${AURORAFW_MODULE_CORE_HEADERS_AURORAFW} DESTINATION include/AuroraFW/)
-install(FILES ${AURORAFW_MODULE_CORE_HEADERS_CORE} DESTINATION include/AuroraFW/Core)
+if(AURORA_DLANG)
+
+else()
+	if(AURORAFW_PCH)
+		add_precompiled_header(aurorafw-core "${AURORAFW_MODULE_CORE_HEADERS}")
+	endif()
+
+	target_link_libraries(aurorafw-core aurorafw-stdl-cc)
+
+	file(GLOB AURORAFW_MODULE_CORE_HEADERS_AURORAFW ${AURORAFW_MODULE_CORE_DIR}/include/AuroraFW/*.*)
+	file(GLOB AURORAFW_MODULE_CORE_HEADERS_CORE ${AURORAFW_MODULE_CORE_DIR}/include/AuroraFW/Core/*.*)
+
+	install(FILES ${AURORAFW_MODULE_CORE_HEADERS_AURORAFW} DESTINATION include/AuroraFW/)
+	install(FILES ${AURORAFW_MODULE_CORE_HEADERS_CORE} DESTINATION include/AuroraFW/Core)
+endif()
