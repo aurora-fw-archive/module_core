@@ -17,11 +17,11 @@
 message(STATUS "Loading core module...")
 
 if(AURORA_DLANG)
-	include_directories(${AURORAFW_MODULE_CORE_DIR}/source)
-
 	if (NOT CONFIGURED_ONCE)
 		set(AURORAFW_MODULE_CORE_SOURCE_DIR ${AURORAFW_MODULE_CORE_DIR}/source)
 	endif()
+	include_directories(${AURORAFW_MODULE_CORE_SOURCE_DIR})
+
 	file(GLOB_RECURSE AURORAFW_MODULE_CORE_SOURCE ${AURORAFW_MODULE_CORE_SOURCE_DIR}/*.d)
 else()
 	include_directories(${AURORAFW_MODULE_CORE_DIR}/legacy/include)
@@ -40,8 +40,6 @@ aurorafw_add_library_target(aurorafw-core SHARED)
 #target_link_libraries(aurorafw-core aurorafw-corelib)
 
 install(TARGETS aurorafw-core DESTINATION lib)
-
-set_target_properties(aurorafw-core PROPERTIES OUTPUT_NAME "aurorafw-core_${AURORAFW_PLATFORM_PREFIX}_${AURORAFW_CPUARCH_PREFIX}")
 
 if(AURORA_DLANG)
 

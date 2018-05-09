@@ -18,7 +18,7 @@ module aurorafw.core.inputlistener;
 ** will be met: https://www.gnu.org/licenses/lgpl-3.0.html.
 ****************************************************************************/
 
-abstract class InputListener {
+pure @safe abstract class InputListener {
 	struct KeyboardEvent {
 		int key, scancode;
 		ushort mods;
@@ -37,22 +37,23 @@ abstract class InputListener {
 		double xoffset, yoffset;
 	}
 
-	~this();
-	bool keyPressed(immutable ref KeyboardEvent ) pure @safe
+	~this() {}
+
+	bool keyPressed(immutable ref KeyboardEvent )
 	{ return true; }
 
-	bool keyReleased(immutable ref KeyboardEvent ) pure @safe
+	bool keyReleased(immutable ref KeyboardEvent )
 	{ return true; }
 
-	bool mousePressed(immutable ref MouseButtonEvent ) pure @safe
+	bool mousePressed(immutable ref MouseButtonEvent )
 	{ return true; }
 
-	bool mouseReleased(immutable ref MouseButtonEvent ) pure @safe
+	bool mouseReleased(immutable ref MouseButtonEvent )
 	{ return true; }
 
-	bool mouseMoved(immutable ref MouseMotionEvent ) pure @safe
+	bool mouseMoved(immutable ref MouseMotionEvent )
 	{ return true; }
 
-	bool mouseScrolled(immutable ref MouseScrollEvent ) pure @safe
+	bool mouseScrolled(immutable ref MouseScrollEvent )
 	{ return true; }
 }
